@@ -10,6 +10,7 @@ This project is designed for learning **databases + Python basics**, and can be 
 - 📃 **View all students** in the database
 - 🔎 **Search students** by full or partial name
 - ❌ **Delete a student** safely (search by name → confirm ID → delete)
+- ✏  **Update a student** safely (search by name → Confirm ID → edit details)
 - 💾 **Persistent storage** with SQLite (`students.db` file)
 
 ---
@@ -28,10 +29,6 @@ Student-Management-CLI-App/
 ├── students.db # SQLite database (created automatically if not exists)
 └── README.md # Project documentation
 
-yaml
-Copy code
-
----
 
 ## 🚀 Getting Started
 
@@ -42,18 +39,19 @@ cd student-management-cli-app
 2️⃣ Run the app
 Make sure you have Python 3.10+ installed, then run:
 
-bash
-Copy code
+
 python main.py
+
 3️⃣ Example menu
-pgsql
-Copy code
+
 |---  Student Management System   ---|
 1. Add Student
 2. View Students
 3. Search Student
 4. Delete Student
-5. Exit
+5. Update Student
+6. Exit
+
 💡 Example Usage
 Add a student → Enter details (name, age, grade)
 
@@ -62,6 +60,8 @@ View students → Lists all with IDs
 Search → Enter partial name, see results
 
 Delete → Search by name, pick correct ID, confirm before delete
+
+Update → Search by name, pick correct ID, edit details
 
 📖 Learning Goals
 This project is part of my Python + Web Development journey.
@@ -91,10 +91,8 @@ Fork the repo
 
 Create a feature branch
 
-Submit a pull request 🚀
+Submit a pull request 
 
 📜 License
 This project is open-source and available under the MIT License.
 
-pgsql
-Copy code
