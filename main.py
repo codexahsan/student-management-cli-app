@@ -113,7 +113,19 @@ def delete_student():
     except ValueError:
         print("Invalid value. try again.")
                        
+def update_student(student_id, new_name, new_age, new_grade):
+    conn = connect_db()
+    cursor = conn.cursor()
 
+    cursor.execute("""
+                   UPDATE students 
+                   SET name = ?, age = ?, grade = ?
+                   WHERE id = ?
+                   """,(new_name,new_age,new_grade,student_id))
+    
+    conn.commit()
+    conn.close()
+    print("Student record updated successfully!")
 
 
 # Main Menu
@@ -125,13 +137,15 @@ def show_menu():
         print("2. View Students")
         print("3. Search Student")
         print("4. Delete Student")
-        print("5. Exit")
+        print("5. Update Student")
+        print("6. Exit")
         choice = input("\nEnter your choice (1-4): ")
 
         if choice == "1":
             name = input("Enter student name: ")
             age = input("Enter student age: ")
             grade = input("Enter student grade: ")
+
             add_student(name, age, grade)
         elif choice == "2":
             view_students()
@@ -140,6 +154,14 @@ def show_menu():
         elif choice == "4":
             delete_student()
         elif choice == "5":
+            search_student()
+            student_id = int(input("\Enter student ID to update: "))
+            new_name = input("Enter new name: ")
+            new_age = int(input("Enter new age: "))
+            new_grade = input("Enter new grade: ")
+
+            update_student(student_id, new_name, new_age, new_grade)
+        elif choice == "6":
             print("\nExiting program. Goodbye!")
             break
         else:
